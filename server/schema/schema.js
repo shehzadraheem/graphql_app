@@ -20,15 +20,32 @@ let userData = [
     {id: '3', name: 'Test', age: 25, profession: 'Nothing'},
 ]
 
+let hobbyData= [
+    {id: '1', title: 'Programming', description: 'Every time code'},
+    {id: '2', title: 'Playing', description: 'Every time playing cricket'},
+    {id: '3', title: 'Cooking', description: 'Every time cooking'},
+    
+]
+
 /// Create Types
 const UserType = new GraphQLObjectType({
     name: 'User',
     description: 'Documentaion for users...',
     fields: ()=> ({
-        id: {type: GraphQLString},
+        id: {type: GraphQLID},
         name: {type: GraphQLString},
         age: {type: GraphQLInt},
         profession: {type: GraphQLString}
+    })
+});
+
+const HobbyType = new GraphQLObjectType({
+    name: 'Hobby',
+    description: 'Documentaion for hobby...',
+    fields: ()=> ({
+        id: {type: GraphQLID},
+        title: {type: GraphQLString},
+        description: {type: GraphQLString},
     })
 });
 
@@ -42,6 +59,15 @@ const RootQuery = new GraphQLObjectType({
     
             resolve(parent, args) {
                 return _.find(userData, {id: args.id});
+            }
+        },
+
+        hobby: {
+            type: HobbyType,
+            args: {id: {type: GraphQLID}},
+
+            resolve(parent, args) {
+                return _.find(hobbyData, {id: args.id})
             }
         }
     }
