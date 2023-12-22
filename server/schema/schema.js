@@ -21,9 +21,9 @@ let userData = [
 ]
 
 let hobbyData= [
-    {id: '1', title: 'Programming', description: 'Every time code'},
-    {id: '2', title: 'Playing', description: 'Every time playing cricket'},
-    {id: '3', title: 'Cooking', description: 'Every time cooking'},
+    {id: '1', title: 'Programming', description: 'Every time code', userId: '1'},
+    {id: '2', title: 'Playing', description: 'Every time playing cricket', userId: '2'},
+    {id: '3', title: 'Cooking', description: 'Every time cooking', userId: '1'},
 ]
 
 let postData = [
@@ -51,6 +51,12 @@ const HobbyType = new GraphQLObjectType({
         id: {type: GraphQLID},
         title: {type: GraphQLString},
         description: {type: GraphQLString},
+        user: {
+            type: UserType,
+            resolve(parent, args){
+                return _.find(userData, {id: parent.userId});
+            }
+        }
     })
 });
 
