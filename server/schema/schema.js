@@ -163,6 +163,21 @@ const Mutation = new GraphQLObjectType({
                 }
                 return hobby;
             }
+        },
+
+        createPost: {
+            type: PostType,
+            args: {
+                id: {type: GraphQLID},
+                comment: {type: GraphQLString},
+            },
+
+            resolve(parent, args){
+                let post = {
+                    comment: args.comment,
+                }
+                return post;
+            }
         }
     }
 });
