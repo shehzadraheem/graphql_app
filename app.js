@@ -20,11 +20,11 @@ app.use('/graphql', graphqlHTTP({
 mongoose.connect()
   .then(() => {
     app.listen({ port: port }, () => {
-      console.log(process.env.mongoUserName);
+      //console.log(process.env.mongoUserName);
       //localhost:4000
       console.log("Listening for requests on my awesome port " + port);
     });
   }).catch((e) => {
-    console.log(process.env.mongoUserName);
+    //console.log(process.env.mongoUserName);
     return console.log("Error:::" + e);
   });
