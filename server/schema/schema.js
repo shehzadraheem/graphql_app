@@ -202,6 +202,19 @@ const Mutation = new GraphQLObjectType({
             },
           },
 
+          RemoveUser: {
+            type: UserType,
+            args: {
+              id: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parent, args) {
+              let removedUser = User.findByIdAndRemove(args.id).exec();
+              if (!removedUser) {
+                throw new "Error"();
+              }
+              return removedUser;
+            },
+          },
 
          // Hobby 
          CreateHobby: {
@@ -244,6 +257,36 @@ const Mutation = new GraphQLObjectType({
             },
           },
 
+          RemoveHobby: {
+            type: HobbyType,
+            args: {
+              id: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parent, args) {
+              let removedHobby = Hobby.findByIdAndRemove(args.id).exec();
+              if (!removedHobby) {
+                throw new "Error"();
+              }
+              return removedHobby;
+            },
+          },
+
+          RemoveHobbies: {
+            type: HobbyType,
+            args: {
+              ids: { type: GraphQLList(GraphQLString) },
+            },
+            resolve(parent, args) {
+              let removedHobbies = Hobby.deleteMany({
+                _id: args.ids,
+              }).exec();
+              if (!removedHobbies) {
+                throw new "Error"();
+              }
+              return removedHobbies;
+            },
+          },
+
 
         // Post  
         CreatePost: {
@@ -281,6 +324,38 @@ const Mutation = new GraphQLObjectType({
               ));
             },
           },
+
+          RemovePost: {
+            type: PostType,
+            args: {
+              id: { type: GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parent, args) {
+              let removedPost = Post.findByIdAndRemove(args.id).exec();
+      
+              if (!removedPost) {
+                throw new "Error"();
+              }
+              return removedPost;
+            },
+          },
+
+          RemovePosts: {
+            type: PostType,
+            args: {
+              ids: { type: GraphQLList(GraphQLString) },
+            },
+            resolve(parent, args) {
+              let removedPosts = Post.deleteMany({
+                _id: args.ids,
+              });
+              if (!removedPosts) {
+                throw new "Error"();
+              }
+              return removedPosts;
+            },
+          },
+      
     }
 });
 
