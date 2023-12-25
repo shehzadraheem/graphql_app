@@ -17,7 +17,7 @@ app.use('/graphql', graphqlHTTP({
 //     console.log('Hello');
 // });
 
-mongoose.connect()
+mongoose.connect( `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoUserPassword}@graphqlcluster.fpcxm.mongodb.net/${process.env.mongoDatabase}?retryWrites=true&w=majority`)
   .then(() => {
     app.listen({ port: port }, () => {
       //console.log(process.env.mongoUserName);
