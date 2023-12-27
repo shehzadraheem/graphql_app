@@ -22,7 +22,7 @@ mongoose.connect( `mongodb+srv://${process.env.mongoUserName}:${process.env.mong
     app.listen(PORT, () => {
       //console.log(process.env.mongoUserName);
       //localhost:4000
-      console.log("Listening for requests on my awesome port " + port);
+      console.log("Listening for requests on my awesome port " + PORT);
     });
   }).catch((e) => {
     //console.log(process.env.mongoUserName);
