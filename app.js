@@ -17,8 +17,7 @@ app.use('/graphql', graphqlHTTP({
 
 
 mongoose.connect(
-   //`mongodb+srv://shehzadraheemsr38:l4jRvlDuSaMLlADg@graphqlcluster.fpcxm.mongodb.net/testing?retryWrites=true&w=majority`
-   `mongodb+srv://shehzadraheemsr38:l4jRvlDuSaMLlADg@graphqlcluster.ps4j1cj.mongodb.net/?retryWrites=true&w=majority`
+   `mongodb+srv://${process.env.mongoUserName}:${process.env.mongoUserPassword}@graphqlcluster.ps4j1cj.mongodb.net/${process.env.mongoDatabase}?retryWrites=true&w=majority`
    )
   .then(() => {
     console.log('Hello');
