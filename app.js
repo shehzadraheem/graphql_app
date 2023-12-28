@@ -6,7 +6,7 @@ const cors = require("cors");
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use('/graphql', graphqlHTTP({
@@ -16,7 +16,10 @@ app.use('/graphql', graphqlHTTP({
 
 
 
-mongoose.connect( `mongodb+srv://shehzadraheemsr38:l4jRvlDuSaMLlADg@graphqlcluster.fpcxm.mongodb.net/testing?retryWrites=true&w=majority`)
+mongoose.connect(
+   //`mongodb+srv://shehzadraheemsr38:l4jRvlDuSaMLlADg@graphqlcluster.fpcxm.mongodb.net/testing?retryWrites=true&w=majority`
+   `mongodb+srv://shehzadraheemsr38:l4jRvlDuSaMLlADg@graphqlcluster.ps4j1cj.mongodb.net/?retryWrites=true&w=majority`
+   )
   .then(() => {
     console.log('Hello');
     app.listen(PORT, () => {
