@@ -41,7 +41,7 @@ class _AddUserPageState extends State<AddUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Add a User",
           style: TextStyle(
               color: Colors.grey, fontSize: 19, fontWeight: FontWeight.bold),
@@ -58,7 +58,7 @@ class _AddUserPageState extends State<AddUserPage> {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                    offset: Offset(0, 10),
+                    offset: const Offset(0, 10),
                     color: Colors.grey.shade300,
                     blurRadius: 30),
               ]),
@@ -80,65 +80,65 @@ class _AddUserPageState extends State<AddUserPage> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
                             controller: _nameController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Name",
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide())),
                             validator: (value) {
-                              if (value!.length == 0) {
+                              if (value!.isEmpty) {
                                 return "Name cannot be empty";
                               } else {
                                 return null;
                               }
                             },
                             keyboardType: TextInputType.text),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
                             controller: _professionController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Profession",
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide())),
                             validator: (value) {
-                              if (value!.length == 0) {
+                              if (value!.isEmpty) {
                                 return "Profession cannot be empty";
                               } else {
                                 return null;
                               }
                             },
                             keyboardType: TextInputType.text),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         TextFormField(
                             controller: _ageController,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Age",
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide())),
                             validator: (value) {
-                              if (value!.length == 0) {
+                              if (value!.isEmpty) {
                                 return "Age cannot be empty";
                               } else {
                                 return null;
                               }
                             },
                             keyboardType: TextInputType.number),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         _isSaving
-                            ? SizedBox(
+                            ? const SizedBox(
                                 height: 20,
                                 width: 20,
                                 child: CircularProgressIndicator(
@@ -165,8 +165,8 @@ class _AddUserPageState extends State<AddUserPage> {
                                     _ageController.clear();
                                   }
                                 },
-                                child: Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                child: const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 36, vertical: 12),
                                     child: Text("Save")),
                               )
@@ -193,16 +193,16 @@ class _AddUserPageState extends State<AddUserPage> {
                         key: _hobbyFormKey,
                         child: Column(
                           children: [
-                            SizedBox(height: 12),
+                            const SizedBox(height: 12),
                             TextFormField(
                               controller: _hobbyTitleController,
-                              decoration: new InputDecoration(
+                              decoration: const InputDecoration(
                                   labelText: "Hobby title",
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide())),
                               validator: (v) {
-                                if (v!.length == 0) {
+                                if (v!.isEmpty) {
                                   return "Enter a title";
                                 } else {
                                   return null;
@@ -210,16 +210,16 @@ class _AddUserPageState extends State<AddUserPage> {
                               },
                               keyboardType: TextInputType.text,
                             ),
-                            SizedBox(height: 12),
+                            const SizedBox(height: 12),
                             TextFormField(
                               controller: _hobbyDescriptionController,
-                              decoration: new InputDecoration(
+                              decoration: const InputDecoration(
                                   labelText: "Hobby description",
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide())),
                               validator: (v) {
-                                if (v!.length == 0) {
+                                if (v!.isEmpty) {
                                   return "Description cannot be empty";
                                 } else {
                                   return null;
@@ -227,9 +227,9 @@ class _AddUserPageState extends State<AddUserPage> {
                               },
                               keyboardType: TextInputType.text,
                             ),
-                            SizedBox(height: 12),
+                            const SizedBox(height: 12),
                             _isSavingHobby
-                                ? SizedBox(
+                                ? const SizedBox(
                                     height: 20,
                                     width: 20,
                                     child: CircularProgressIndicator(
@@ -255,8 +255,9 @@ class _AddUserPageState extends State<AddUserPage> {
                                       _hobbyTitleController.clear();
                                       _hobbyDescriptionController.clear();
                                     },
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
+                                    style: buildButtonStyle(),
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
                                           horizontal: 36, vertical: 12),
                                       child: Text(
                                         "Save",
@@ -264,7 +265,6 @@ class _AddUserPageState extends State<AddUserPage> {
                                             color: Colors.grey, fontSize: 16),
                                       ),
                                     ),
-                                    style: buildButtonStyle(),
                                   )
                           ],
                         ),
@@ -290,16 +290,16 @@ class _AddUserPageState extends State<AddUserPage> {
                       key: _postFormKey,
                       child: Column(
                         children: [
-                          SizedBox(height: 12),
+                          const SizedBox(height: 12),
                           TextFormField(
                             controller: _postController,
-                            decoration: new InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Post Comment ",
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
                                     borderSide: BorderSide())),
                             validator: (v) {
-                              if (v!.length == 0) {
+                              if (v!.isEmpty) {
                                 return "Post cannot be empty";
                               } else {
                                 return null;
@@ -307,9 +307,9 @@ class _AddUserPageState extends State<AddUserPage> {
                             },
                             keyboardType: TextInputType.text,
                           ),
-                          SizedBox(height: 12),
+                          const SizedBox(height: 12),
                           _isSavingPost
-                              ? SizedBox(
+                              ? const SizedBox(
                                   height: 20,
                                   width: 20,
                                   child: CircularProgressIndicator(
@@ -330,8 +330,9 @@ class _AddUserPageState extends State<AddUserPage> {
                                       _postController.clear();
                                     }
                                   },
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                  style: buildButtonStyle(),
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 36, vertical: 12),
                                     child: Text(
                                       "Save",
@@ -339,7 +340,7 @@ class _AddUserPageState extends State<AddUserPage> {
                                           color: Colors.grey, fontSize: 16),
                                     ),
                                   ),
-                                  style: buildButtonStyle())
+                          )
                         ],
                       ),
                     );
@@ -352,12 +353,6 @@ class _AddUserPageState extends State<AddUserPage> {
                 child: Visibility(
                     visible: _visible,
                     child: TextButton(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 26.0, vertical: 12.0),
-                        child: Text("Done",
-                            style: TextStyle(color: Colors.grey, fontSize: 16)),
-                      ),
                       style: buildButtonStyle(),
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
@@ -366,6 +361,12 @@ class _AddUserPageState extends State<AddUserPage> {
                           },
                         ), (route) => false);
                       },
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 26.0, vertical: 12.0),
+                        child: Text("Done",
+                            style: TextStyle(color: Colors.grey, fontSize: 16)),
+                      ),
                     )),
               )
             ],

@@ -7,7 +7,7 @@ void main() async {
   await initHiveForFlutter();
 
   final HttpLink link =
-      HttpLink('https://graphql-flutter-course.herokuapp.com/graphql');
+      HttpLink('https://sore-teal-angelfish-gear.cyclic.app/graphql');
   ValueNotifier<GraphQLClient> client = ValueNotifier(
       GraphQLClient(link: link, cache: GraphQLCache(store: HiveStore())));
 
@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blueGrey,
               visualDensity: VisualDensity.adaptivePlatformDensity,
               textTheme: theme,
-              appBarTheme: AppBarTheme(
+              appBarTheme: const AppBarTheme(
                   iconTheme: IconThemeData(color: Colors.black87),
                   //texThetme: theme
                   )
-                  ),
-          home: HomeScreen(),
+          ),
+          home: const HomeScreen(),
         ),
       ),
     );

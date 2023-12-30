@@ -49,9 +49,13 @@ query {
         options: QueryOptions(document: gql(_query)),
         builder: (result, {fetchMore, refetch}) {
           if (result.isLoading) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
+          } else if (result.hasException) {
+            print(result.exception);
+            return const Center(child: Text('No data found'),);
           }
-          users = result.data!["users"];
+
+          users = result.data?["users"];
 
           return (users.isNotEmpty)
               ? ListView.builder(
@@ -247,10 +251,9 @@ query {
                     );
                   },
                 )
-              : Container(
-                  child: Center(
-                  child: Text("No items found"),
-                ));
+              : const Center(
+                 child: Text("No items found"),
+          );
         });
   }
 
