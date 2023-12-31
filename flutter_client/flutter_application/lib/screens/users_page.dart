@@ -23,13 +23,17 @@ query {
     posts{
        id
        comment
-       userId
+       user {
+        id
+       }
     }
     hobbies{
       id
       title
       description
-      userId
+      user {
+        id
+       }
     }
   }
 

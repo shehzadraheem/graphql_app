@@ -24,7 +24,7 @@ class _AddUserPageState extends State<AddUserPage> {
 
   bool _isSaving = false;
 
-  bool _visible = false;
+  bool _visible = true;
 
   bool _isSavingHobby = false;
   bool _isSavingPost = false;
@@ -187,7 +187,13 @@ class _AddUserPageState extends State<AddUserPage> {
                           setState(() {
                             _isSavingHobby = false;
                           });
-                        }),
+                        },
+                        onError: (error){
+                          print('${error?.graphqlErrors}');
+                          print(error?.linkException);
+                          print(error?.originalStackTrace);
+                        }
+                    ),
                     builder: (runMutation, result) {
                       return Form(
                         key: _hobbyFormKey,
@@ -379,7 +385,7 @@ class _AddUserPageState extends State<AddUserPage> {
 
 String insertPost() {
   return """
-    mutation CreatePost(\$comment: String!, \$userId: String!) {
+    mutation CreatePost(\$comment: String!, \$userId: ID!) {
       CreatePost(comment: \$comment, userId: \$userId){
          id
          comment
@@ -401,7 +407,7 @@ String insertUser() {
 
 String insertHobby() {
   return """
-    mutation CreateHobby(\$title: String!, \$description: String!, \$userId: String!) {
+    mutation CreateHobby(\$title: String!, \$description: String!, \$userId: ID!) {
       CreateHobby(title: \$title, description: \$description, userId: \$userId){
          id
          title

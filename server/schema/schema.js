@@ -156,7 +156,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(PostType),
             resolve(parent, args) {
               //return Post.find({ userId: parent.id });
-              return Post.find({});
+              return Post.find({id: args.userId});
             }
         }
     }
